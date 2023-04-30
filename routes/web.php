@@ -1,0 +1,28 @@
+<?php
+
+/** @var \Laravel\Lumen\Routing\Router $router */
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It is a breeze. Simply tell Lumen the URIs it should respond to
+| and give it the Closure to call when that URI is requested.
+|
+*/
+
+$router->get('/', function () use ($router) {
+    return $router->app->version();
+});
+
+$router->group(['prefix' => 'api'], function($router) {
+    $router->get('/users',['uses' => 'StudentController@getUsers']);
+});
+
+$router->post('/insert', 'StudentController@insert'); // insert - insert new record
+$router->delete('/delete/{id}', 'StudentController@delete'); // delete - delete student record by studid
+$router->put('/update/{id}', 'StudentController@update'); // update - update student record by studid
+$router->get('/search/{id}', 'StudentController@search'); // search - Search Student by studid
+$router->get('browse', 'StudentController@browse'); // browse - View All Students Records
