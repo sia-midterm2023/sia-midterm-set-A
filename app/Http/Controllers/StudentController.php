@@ -43,7 +43,7 @@ class StudentController extends Controller
                 'firstname' => 'required|alpha:max:50',
                 'middlename' => 'required|alpha:max:50',
                 'bday' => 'date',
-                'age' => 'required|int:gt:50 years'
+                'age' => 'required|int:lt:50 years'
             ])  
         ];
         $this->validate($request, $rules);
