@@ -43,7 +43,7 @@ class StudentController extends Controller
                 'firstname' => 'required|alpha:max:50',
                 'middlename' => 'required|alpha:max:50',
                 'bday' => 'date',
-                'age' => 'required|int:lt:50 years'
+                'age' => 'required|integer|max:49'
             ])  
         ];
         $this->validate($request, $rules);
@@ -60,7 +60,7 @@ class StudentController extends Controller
                 'firstname' => 'required|alpha:max:50',
                 'middlename' => 'required|alpha:max:50',
                 'bday' => 'date',
-                'age' => 'required|int:gt:50 years'
+                'age' => 'required|integer|max:49'
             ])  
         ];
         $this->validate($request, $rules);
@@ -81,5 +81,7 @@ class StudentController extends Controller
     public function delete($id){
         $user = User::findOrFail($id);
         $user->delete();
+    
+        return $this->successResponse($user);
     }
 }
