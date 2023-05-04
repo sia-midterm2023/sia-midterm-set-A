@@ -31,7 +31,7 @@ class StudentController extends Controller
             return $this->successResponse($user);
         }
         {
-            return $this->errorResponse('User ID Does Not Exists', Response::HTTP_NOT_FOUND);
+            return $this->errorResponse('Student ID Does Not Exists', Response::HTTP_NOT_FOUND);
         }
         }
 
