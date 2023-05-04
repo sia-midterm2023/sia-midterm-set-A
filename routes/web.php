@@ -17,10 +17,6 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'api'], function($router) {
-    $router->get('/users',['uses' => 'StudentController@getUsers']);
-});
-
 $router->post('/insert', 'StudentController@insert'); // insert - insert new record
 $router->delete('/delete/{id}', 'StudentController@delete'); // delete - delete student record by studid
 $router->put('/update/{id}', 'StudentController@update'); // update - update student record by studid
